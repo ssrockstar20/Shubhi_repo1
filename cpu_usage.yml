@@ -43,8 +43,8 @@
 
      rescue:
        -name: Rescue task if Task 2 fails
-        debug: 
-          msg: ""CPU is below threshold"
+        shell: ps
+          
     
       
 
