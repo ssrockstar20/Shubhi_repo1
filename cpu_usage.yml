@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+   - Vars/global.yml 
+  tasks:
+   - name: Get CPU usage 
+     shell: "top -b -n 1" 
+     register: cpu_output
+
+   - name: output of cpu usage
+     debug:
+       msg: "{{cpu_output}}"
+
+   - name: set cpu usage
+     set_fact:
+       user_cpu: "{{cpu_output.stdout_lines[2].split()[1]}}"
+
+   - name: output cpu usage in stdout
+     debug:
+       msg: "{{user_cpu}}"
+
+  
+
+   - name: printing th value
+     debug:
+       msg: "{{th_value}}"
+
+   - name: comparing two values
+     debug:
+       msg: "Cpu is under threshhold value , No actions needed"
+     when: user_cpu == th_value
+    
+      
+
+
+
