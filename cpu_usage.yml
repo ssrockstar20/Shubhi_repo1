@@ -42,9 +42,9 @@
        msg: "{{ top_processes.stdout_lines }}"
 
      rescue:
-    -name: Rescue task if Task 2 fails
-     debug: 
-       msg: ""CPU is below threshold"
+       -name: Rescue task if Task 2 fails
+        debug: 
+          msg: ""CPU is below threshold"
     
       
 
