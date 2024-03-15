@@ -36,8 +36,8 @@
      register: "top_processes"
 
    - name: top processses
-      debug:
-        msg: "{{ top_processes.stdout_lines }}"
+     debug:
+       msg: "{{ top_processes.stdout_lines }}"
     
       
 
