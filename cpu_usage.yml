@@ -29,7 +29,7 @@
    - name: comparing two values
      debug:
        msg: "Cpu is under threshhold value , No actions needed"
-     when: user_cpu | int  <= th_value
+     when: user_cpu <= th_value
     
       
 
