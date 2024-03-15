@@ -32,7 +32,7 @@
      when: user_cpu  | int <= th_value
   
    - name: first five processes of CPU
-     command: ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 6
+     command: ps -eo pid,ppid,cmd,%cpu | head -n 6
      register: top_processes
 
    - name: top processses
