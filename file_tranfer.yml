@@ -5,7 +5,7 @@
   become_method: su
   tasks:
    - name: checking with linux command using shell  module
-     shell: ll
+     shell: ls
      register: list_op
      delegate_to: localhost
    - debug:
