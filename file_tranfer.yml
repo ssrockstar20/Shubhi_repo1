@@ -14,6 +14,7 @@
      copy:
        src: /home/ansible/folder1/test.txt
        dest: /home/ansible/folder2/test.txt
+      remote_src: yes
      register: transferfile
      delegate_to: 192.168.15.131
    - debug: 
