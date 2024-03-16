@@ -9,5 +9,5 @@
        dest: /path/to/localhost/folder2/test1
 
      register: transferfile
-     debug: 
-       msg: "{{transferfile}}"
+    - debug: 
+        msg: "{{transferfile}}"
