@@ -25,9 +25,9 @@
      register: list_op1
      delegate_to: 192.168.15.131  
    - debug:
-       msg: "{{list_op1}}"
+       msg: "{{list_op1.stdout}}"
 
-  #  - debug:
-  #      msg: "file sucessfully copied"
-  #    when: list_op1 is defined and 
+   - debug:
+       msg: "file sucessfully copied"
+     when: list_op1 is defined and list_op1.stdout == test.txt
      
