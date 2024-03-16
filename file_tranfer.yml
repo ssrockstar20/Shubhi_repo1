@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: false
   become: true
-
+  become_method: su
   tasks:
    - name: transfering file
      copy:
@@ -11,4 +11,4 @@
 
      register: transferfile
    - debug: 
-       msg: "{{transferfile}}"
+       msg: "msg{{transferfile}}"
