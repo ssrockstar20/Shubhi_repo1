@@ -32,18 +32,21 @@
      when: user_cpu  | int <= th_value
   
    - name: first five processes of CPU
-     block: 
      when: user_cpu  | int >= th_value
-     shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
-     register: top_processes
+     block: 
+     - name: getting top 5 process     
+       shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
+       register: top_processes
 
-   - name: top processses
-     debug:
-       msg: "{{ top_processes.stdout_lines }}"
+     - name: top processses
+       debug:
+         msg: "{{ top_processes.stdout_lines }}"
+       when: top_processes is defined 
 
      rescue:
-       -name: Rescue task if Task 2 fails
-        shell: ps
+       - name: Rescue task if Task 2 fails
+         debug: 
+           msg: "failed to get the top 5 process . SOmething happened worng"
           
     
       
