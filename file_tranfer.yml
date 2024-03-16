@@ -5,18 +5,18 @@
   become_method: su
   tasks:
    - name: checking with linux command using shell  module
-     shell: ls
+     shell: ls /home/ansible/folder1/
      register: list_op
-     delegate_to: localhost
+     delegate_to: 192.168.15.131
    - debug:
        msg: "{{list_op}}"
 
-   - name: transfering file
-     copy:
-       src: /home/ansible/folder1/test.txt
-       dest: /home/ansible/folder2/test.txt
-       remote_src: true
+  #  - name: transfering file
+  #    copy:
+  #      src: /home/ansible/folder1/test.txt
+  #      dest: /home/ansible/folder2/test.txt
+  #      remote_src: true
 
-     register: transferfile
-   - debug: 
-       msg: "msg{{transferfile}}"
+  #    register: transferfile
+  #  - debug: 
+  #      msg: "msg{{transferfile}}"
