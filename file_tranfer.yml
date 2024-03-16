@@ -5,7 +5,7 @@
   become_method: su
   tasks:
    - name: checking with linux command using shell  module
-     shell: ls /home/ansible/folder1
+     shell: pwd
      register: list_op
      delegate_to: localhost
    - debug:
