@@ -10,12 +10,11 @@
    - debug:
        msg: "{{list_op}}"
 
-  #  - name: transfering file
-  #    copy:
-  #      src: /home/ansible/folder1/test.txt
-  #      dest: /home/ansible/folder2/test.txt
-  #      remote_src: true
-
-  #    register: transferfile
-  #  - debug: 
-  #      msg: "msg{{transferfile}}"
+   - name: transfering file
+     copy:
+       src: /home/ansible/folder1/test.txt
+       dest: /home/ansible/folder2/test.txt
+     register: transferfile
+     delegate_to: 192.168.15.131
+   - debug: 
+       msg: "msg{{transferfile}}"
