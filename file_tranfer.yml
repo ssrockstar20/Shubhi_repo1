@@ -8,6 +8,7 @@
      copy:
        src: /home/ansible/folder1/test.txt
        dest: /home/ansible/folder2/test.txt
+       remote_src: true
 
      register: transferfile
    - debug: 
