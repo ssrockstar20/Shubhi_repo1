@@ -5,8 +5,8 @@
   tasks:
    - name: transfering file
      copy:
-       src: /path/to/localhost/folder1/test1
-       dest: /path/to/localhost/folder2/test1
+       src: /home/ansible/folder1/test.txt
+       dest: /home/ansible/folder2/test.txt
 
      register: transferfile
    - debug: 
