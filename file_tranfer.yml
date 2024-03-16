@@ -29,5 +29,5 @@
 
    - debug:
        msg: "file sucessfully copied"
-     when: list_op1 is defined and list_op1.stdout == test.txt
+     when: list_op1 is defined and list_op1.stdout == "test.txt"
      
