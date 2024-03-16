@@ -7,6 +7,7 @@
    - name: checking with linux command using shell  module
      shell: ls /home/ansible/folder1
      register: list_op
+     delegate_to: localhost
    - debug:
        msg: "{{list_op}}"
 
