@@ -4,6 +4,12 @@
   become: true
   become_method: su
   tasks:
+   - name: checking with linux command using shell  module
+     shell: ls /home/ansible/folder1
+     register: list_op
+   - debug:
+       msg: "{{list_op}}"
+
    - name: transfering file
      copy:
        src: /home/ansible/folder1/test.txt
