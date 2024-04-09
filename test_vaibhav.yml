@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: setfact
+    set_fact:
+       server_name: "ubuntu"
+  - name: printing message using debug moduele
+    debug:
+       msg: "{{server_name}}"
+    
