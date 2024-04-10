@@ -1,10 +1,33 @@
+# ---
+# - hosts: localhost
+#   tasks:
+#   - name: setfact
+#     set_fact:
+#        server_name: "ubuntu"
+#   - name: printing message using debug moduele
+#     debug:
+#        msg: "{{server_name}}"
 ---
-- hosts: localhost
+- name: Calculate Total Cost
+  hosts: localhost
+  gather_facts: no
+  
   tasks:
-  - name: setfact
-    set_fact:
-       server_name: "ubuntu"
-  - name: printing message using debug moduele
-    debug:
-       msg: "{{server_name}}"
-    
+    - name: Define shopping cart items and their prices
+      set_fact:
+        shopping_cart:
+          - item: "Apple"
+            price: 2
+          - item: "Banana"
+            price: 1
+          - item: "Orange"
+            price: 1.5
+
+    - name: Calculate total cost
+      set_fact:
+        total_cost: "{{ shopping_cart | map(attribute='price') | sum }}"
+
+    - name: Display total cost
+      debug:
+        msg: "Total cost of items in the shopping cart: ${{ total_cost }}"
+   
