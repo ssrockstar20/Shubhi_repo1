@@ -1,0 +1,13 @@
+---
+- name: check CPU Utilization
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Get CPU Utilization
+      command: top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+      register: cpu_utilization
+
+    - name: Display CPU Utilization
+      debug:
+        msg: "cpu utilization is {{ cpu_utilization.stdout }}"
