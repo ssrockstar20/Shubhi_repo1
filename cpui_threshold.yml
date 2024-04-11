@@ -19,21 +19,22 @@
     - Vars/global.yml 
 
   tasks:
+    - name: setting up flag
+      job_output: ""
+
     - name: get cpu utilization
       shell: top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
       register: cpu_utilization
 
-    - name: check cpu utilization against threshold
+
+    - name: Print cpu usage current value 1st time
       debug: 
-        msg: |
-          CPU Utilization is {{ cpu_utilization.stdout }}.
-          Threshold value is {{ cpu_threshold }}.
-    - name: test debug 
-      debug: 
-        msg: " Cpu Utilization is {{ cpu_utilization.stdout_lines }}\n threshold value is {{cpu_threshold}}"
-    - name: comapre cpu utilization against threshold
-      set_fact: 
-        threshold_exceeded: "{{ cpu_utilization.stdout | float > cpu_threshold | replace('%', '') | float }}"
+        msg: " Cpu Utilization is {{ cpu_utilization.stdout}}"
+
+###Comparing the cpu with threshhold value
+    # - name: comapre cpu utilization against threshold
+    #   set_fact: 
+    #     job_output: ""
 
     - name: wait for 20 second if cpu utilization exceeds threshold
       pause:
