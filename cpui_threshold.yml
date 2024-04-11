@@ -36,11 +36,11 @@
     #   set_fact: 
     #     job_output: ""
 
-    - name: wait for 20 second if cpu utilization exceeds threshold
-      pause:
-        seconds: 10
-      when: threshold_exceeded
+    # - name: wait for 20 second if cpu utilization exceeds threshold
+    #   pause:
+    #     seconds: 10
+    #   when: threshold_exceeded
 
-    - name: display result
-      debug:
-        msg: "CPU Utilization is {{ cpu_utilization.stdout }}. {{ 'Over Threshold' if threshold_exceeded else 'Under Threshold' }}"
+    # - name: display result
+    #   debug:
+    #     msg: "CPU Utilization is {{ cpu_utilization.stdout }}. {{ 'Over Threshold' if threshold_exceeded else 'Under Threshold' }}"
