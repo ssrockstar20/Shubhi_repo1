@@ -72,6 +72,11 @@
       set_fact: 
         job_output: "Cpu value is greater thrishhold value {{cpu_threshold}}"
       when: cpu_value2| int > cpu_threshold
+    - name: checking top 5 process
+      shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
+      register: top_five_process
+      
+      
 
 ###In second iteration if cpu is above th value get top 5 high cpu process and print it
 
