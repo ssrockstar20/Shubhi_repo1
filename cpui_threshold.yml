@@ -78,7 +78,7 @@
 
     - name: Print cpu usage current value 1st time
       debug: 
-        msg: "these are the top 5 process {{top_five_process.stdout_lines}}"
+        msg: "these are the top 5 process \n {{top_five_process.stdout_lines}}"
      
       
       
