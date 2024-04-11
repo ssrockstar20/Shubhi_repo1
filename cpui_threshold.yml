@@ -46,10 +46,34 @@
         job_output: "Cpu value is greater thrishhold value {{cpu_threshold}}"
       when: cpu_value1| int > cpu_threshold
 
-    # - name: wait for 20 second if cpu utilization exceeds threshold
-    #   pause:
-    #     seconds: 10
-    #   when: threshold_exceeded
+    - name: wait for 20 second if cpu utilization exceeds threshold
+      pause:
+        seconds: 10
+      when: cpu_value1| int > cpu_threshold
+
+    - name: get cpu utilization 2nd time after wait
+      shell: top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+      register: cpu_utilization2
+
+    - name: Print cpu usage current value 2st time
+      debug: 
+        msg: " Cpu Utilization is {{ cpu_utilization2.stdout}}"
+
+    - name: current value 2nd time
+      set_fact:
+         cpu_value2: "{{cpu_utilization2.stdout.split('%')[0]}}"
+
+    - name: comapre cpu utilization against threshold 2nd time
+      set_fact: 
+        job_output: "Cpu value is under thrishhold value {{cpu_threshold}}"
+      when: cpu_value2 | int <= cpu_threshold
+
+    - name: comapre cpu utilization against threshold
+      set_fact: 
+        job_output: "Cpu value is greater thrishhold value {{cpu_threshold}}"
+      when: cpu_value2| int > cpu_threshold
+
+###In second iteration if cpu is above th value get top 5 high cpu process and print it
 
     # - name: display result
     #   debug:
