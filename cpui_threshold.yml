@@ -29,7 +29,8 @@
           CPU Utilization is {{ cpu_utilization.stdout }}.
           Threshold value is {{ cpu_threshold }}.
     - name: test debug 
-      debug: " Cpu Utilization is {{ cpu_utilization.stdout_lines }}\n threshold value is {{cpu_threshold}}"
+      debug: 
+        msg: " Cpu Utilization is {{ cpu_utilization.stdout_lines }}\n threshold value is {{cpu_threshold}}"
     - name: comapre cpu utilization against threshold
       set_fact: 
         threshold_exceeded: "{{ cpu_utilization.stdout | float > cpu_threshold | replace('%', '') | float }}"
