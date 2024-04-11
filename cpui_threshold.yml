@@ -19,7 +19,7 @@
   # Vars:
   #   cpu_threshold: "6%"
 
-   vars_files:
+   Vars_files:
    - Vars/global.yml 
 
   tasks:
