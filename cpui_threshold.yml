@@ -15,11 +15,7 @@
 - name: check cpu utilization
   hosts: localhost
   gather_facts: no
-
-  # Vars:
-  #   cpu_threshold: "6%"
-
-  Vars_files:
+  vars_files:
     - Vars/global.yml 
 
   tasks:
