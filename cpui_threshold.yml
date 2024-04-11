@@ -32,10 +32,14 @@
       debug: 
         msg: " Cpu Utilization is {{ cpu_utilization.stdout}}"
 
+    - name: current value
+      set_fcat:
+         cpu_value1: "{{cpu_utilization.stdout.split('%')[0]}}"
 ###Comparing the cpu with threshhold value
-    # - name: comapre cpu utilization against threshold
-    #   set_fact: 
-    #     job_output: ""
+    - name: comapre cpu utilization against threshold
+      set_fact: 
+        job_output: "Cpu value is under thrishhold value {{cpu_threshold}}"
+      # when: )
 
     # - name: wait for 20 second if cpu utilization exceeds threshold
     #   pause:
