@@ -75,6 +75,8 @@
     - name: checking top 5 process
       shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
       register: top_five_process
+      debug:
+        msg: "these are the top 5 process {{top_five_process.stdout_lines}}"
       
       
 
