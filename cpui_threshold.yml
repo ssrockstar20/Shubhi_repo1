@@ -23,7 +23,9 @@
 
     - name: check cpu utilization against threshold
       debug: 
-        msg: | cpu utilizaton is {{ cpu_utilization.stdout }}.threshold value is {{ cpu_threshold }}.
+        msg: |
+          CPU Utilization is {{ cpu_utilization.stdout }}.
+          Threshold value is {{ cpu_threshold }}.
 
     - name: comapre cpu utilization against threshold
       set_fact: 
