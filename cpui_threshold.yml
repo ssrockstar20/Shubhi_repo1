@@ -73,10 +73,11 @@
         job_output: "Cpu value is greater thrishhold value {{cpu_threshold}}"
       when: cpu_value2| int > cpu_threshold
     - name: checking top 5 process
-      shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
-      register: top_five_process
-      debug:
-        msg: "these are the top 5 process {{top_five_process.stdout_lines}}"
+      set_facts:
+        shell: ps -eo pid,ppid,cmd,%cpu | head -n 6
+        register: top_five_process
+        debug:
+          msg: "these are the top 5 process {{top_five_process.stdout_lines}}"
       
       
 
