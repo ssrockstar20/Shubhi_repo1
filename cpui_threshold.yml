@@ -39,7 +39,7 @@
     - name: comapre cpu utilization against threshold
       set_fact: 
         job_output: "Cpu value is under thrishhold value {{cpu_threshold}}"
-      # when: )
+      when: cpu_value <= cpu_threshold
 
     # - name: wait for 20 second if cpu utilization exceeds threshold
     #   pause:
