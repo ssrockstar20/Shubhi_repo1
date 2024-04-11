@@ -14,7 +14,7 @@
 ---
 - name: check cpu utilization
   hosts: localhost
-  gather_facts: no
+  gather_facts: yes
   vars_files:
     - Vars/global.yml 
 
