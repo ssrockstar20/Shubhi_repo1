@@ -19,8 +19,8 @@
   # Vars:
   #   cpu_threshold: "6%"
 
-   Vars_files:
-   - Vars/global.yml 
+  Vars_files:
+    - Vars/global.yml 
 
   tasks:
     - name: get cpu utilization
