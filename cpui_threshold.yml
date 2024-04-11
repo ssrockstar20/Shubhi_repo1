@@ -33,7 +33,7 @@
         msg: " Cpu Utilization is {{ cpu_utilization.stdout}}"
 
     - name: current value
-      set_fcat:
+      set_fact:
          cpu_value1: "{{cpu_utilization.stdout.split('%')[0]}}"
 ###Comparing the cpu with threshhold value
     - name: comapre cpu utilization against threshold
