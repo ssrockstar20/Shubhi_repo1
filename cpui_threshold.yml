@@ -16,6 +16,9 @@
   hosts: localhost
   gather_facts: no
 
+  Vars:
+    cpu_threshold: "6%"
+
   tasks:
     - name: get cpu utilization
       shell: top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
